@@ -34,3 +34,11 @@
 #row3 .col1, #row3 .col2, #row3 .col3 {
   height: 134px;
 }
+
+.x {
+  background-color: blue;
+}
+
+.o {
+  background-color: green;
+}

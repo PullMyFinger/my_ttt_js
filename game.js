@@ -22,16 +22,29 @@ Game.prototype.isPlayerHuman = function(){
 };
 
 Game.prototype.startGame = function(){
+
   var p1coors;
+  var p2coors;
   while (true){
     //p1 turn
-    p1coors = this.p1.getCoors()
+    p1coors = this.p1.getCoors();
+    this.board.mark(p1coors, 'X');
     //check game over?
       //if true: break
     //p2 turn
+    p2coors = this.p2.getCoors();
+    this.board.mark(p2coors, 'O');
     //check game over?
       //if true: break
 
   }
 };
 //print game over
+
+
+
+
+
+
+
+debugger;
