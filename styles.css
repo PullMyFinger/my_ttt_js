@@ -1,0 +1,36 @@
+#board {
+  height: 402px;
+  width: 402px;
+  margin: 50px;
+  border: 2px solid black;
+}
+
+#row1, #row2, #row3 {
+  height: 134px;
+}
+
+#row1, #row2 {
+  border-bottom: 2px solid black;
+  height: 132px;
+}
+
+.col1, .col2, .col3 {
+  width: 134px;
+  height: 132px;
+  float: left;
+  background-color: red;
+  text-align: center;
+
+  vertical-align: middle;
+  line-height: 134px;
+  font-size: xx-large;
+}
+
+.col1, .col2 {
+  border-right: 2px solid black;
+  width: 132px;
+}
+
+#row3 .col1, #row3 .col2, #row3 .col3 {
+  height: 134px;
+}
