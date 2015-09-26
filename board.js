@@ -16,7 +16,6 @@ function Board(){
       board[rowI][colI].htmlRef = cell;
       board[rowI][colI].value = null;
 
-      // board[rowI][colI].htmlRef.textContent = "";
     });
   });
 

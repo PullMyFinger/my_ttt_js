@@ -1,4 +1,5 @@
 function Game(){
+  debugger;
   //initialize board
   this.board = new Board();
   //get input for players
@@ -39,12 +40,11 @@ Game.prototype.startGame = function(){
 
   }
 };
+
+Game.prototype.gameOver = function(){
+  // check for full horizontal rows
+  // check for full vertical rows
+  // check diagonals
+};
+
 //print game over
-
-
-
-
-
-
-
-debugger;
