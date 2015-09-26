@@ -55,8 +55,8 @@ Game.prototype.gameOver = function(){
 
   var grid = this.board.board;
   var horizontalWin = false;
-  var verticalWin = false
-  var diagonalWin;
+  var verticalWin = false;
+  var diagonalWin = false;
   var allEqual;
   var notNull;
 
@@ -78,7 +78,19 @@ Game.prototype.gameOver = function(){
   }
   // check diagonals
 
-  return horizontalWin || verticalWin;
+  allEqual = (grid[0][0].value === grid[1][1].value) &&
+             (grid[1][1].value === grid[2][2].value);
+  notNull = grid[0][0].value !== null;
+
+  diagonalWin = diagonalWin || (allEqual && notNull);
+
+  allEqual = (grid[0][2].value === grid[1][1].value) &&
+             (grid[1][1].value === grid[2][0].value);
+  notNull = grid[0][2].value !== null;
+
+  diagonalWin = diagonalWin || (allEqual && notNull);
+
+  return horizontalWin || verticalWin || diagonalWin;
 };
 
 //print game over
