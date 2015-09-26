@@ -1,5 +1,6 @@
 function Board(){
   this.reloadBoard();
+  this.cellsLeft = 9;
 }
 
 Board.prototype.isValidMove = function(coors){
@@ -17,6 +18,7 @@ Board.prototype.mark = function(coors, char){
   this.board[row][col].value = char;
   this.board[row][col].htmlRef.textContent = char;
   this.board[row][col].htmlRef.classList.add(lowercase);
+  this.cellsLeft --;
 };
 
 Board.prototype.reloadBoard = function(){

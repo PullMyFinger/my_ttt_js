@@ -1,6 +1,7 @@
-function Player(isHuman, board){
+function Player(isHuman, board, gtag){
   this.isHuman = isHuman;
   this.board = board;
+  this.gtag = gtag;
 }
 
 Player.prototype.getCoors = function(){
@@ -9,8 +10,8 @@ Player.prototype.getCoors = function(){
   var coors;
   if(this.isHuman){
     do{
-      row = parseInt(prompt("enter row #"));
-      col = parseInt(prompt("enter col #"));
+      row = parseInt(prompt(this.gtag + " enter row #"));
+      col = parseInt(prompt(this.gtag + " enter col #"));
       coors = [row, col];
     }while(this.board.isValidMove(coors) === false);
   }else{

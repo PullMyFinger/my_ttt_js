@@ -17,13 +17,15 @@ Game.prototype.isPlayerHuman = function(){
   var response;
   do{
     response = prompt("Is player human?(y/n)");
+    // response = "n";
   }while(response !== "y" && response !== "n");
 
   return response === "y";
 };
 
 Game.prototype.startGame = function(){
-
+  var gameOverType;
+  var playerWon;
   var p1coors;
   var p2coors;
   while (true){
@@ -31,21 +33,26 @@ Game.prototype.startGame = function(){
     p1coors = this.p1.getCoors();
     this.board.mark(p1coors, 'X');
     //check game over?
-    if(this.gameOver() === true){
-      alert('player 1 won');
+    gameOverType = this.gameOver();
+    if(gameOverType){
+      playerWon = "one";
       break;
     }
       //if true: break
     //p2 turn
     p2coors = this.p2.getCoors();
     this.board.mark(p2coors, 'O');
-    if(this.gameOver() === true){
-      alert('player 2 won');
+    //check game over?
+    gameOverType = this.gameOver();
+    if(gameOverType){
+      playerWon = "two";
       break;
     }
-    //check game over?
-      //if true: break
-
+  }
+  if(gameOverType === 's'){
+    alert('Stalemate');
+  }else{
+    alert('player ' + playerWon + ' won by ' + gameOverType);
   }
 };
 
@@ -57,6 +64,7 @@ Game.prototype.gameOver = function(){
   var horizontalWin = false;
   var verticalWin = false;
   var diagonalWin = false;
+  var staleMate;
   var allEqual;
   var notNull;
 
@@ -90,7 +98,12 @@ Game.prototype.gameOver = function(){
 
   diagonalWin = diagonalWin || (allEqual && notNull);
 
-  return horizontalWin || verticalWin || diagonalWin;
+  staleMate = this.board.cellsLeft === 0;
+  if(horizontalWin) return 'h';
+  if(verticalWin) return 'v';
+  if(diagonalWin) return 'd';
+  if(staleMate) return 's';
+  return false;
 };
 
 //print game over
