@@ -1,24 +1,5 @@
 function Board(){
-  function convertToArray(htmlCollection) {
-    var newCopy = Array.prototype.slice.call(htmlCollection);
-    return newCopy;
-  }
-  var board = this.board = [
-    [{},{},{}],
-    [{},{},{}],
-    [{},{},{}]
-  ];
-
-  var rows = convertToArray(document.getElementById("board").children)
-  rows.forEach(function(row, rowI){
-    var cols = convertToArray(row.children)
-    cols.forEach(function(cell, colI){
-      board[rowI][colI].htmlRef = cell;
-      board[rowI][colI].value = null;
-
-    });
-  });
-
+  this.reloadBoard();
 }
 
 Board.prototype.isValidMove = function(coors){
@@ -36,4 +17,31 @@ Board.prototype.mark = function(coors, char){
   this.board[row][col].value = char;
   this.board[row][col].htmlRef.textContent = char;
   this.board[row][col].htmlRef.classList.add(lowercase);
+};
+
+Board.prototype.reloadBoard = function(){
+  function convertToArray(htmlCollection) {
+    var newCopy = Array.prototype.slice.call(htmlCollection);
+    return newCopy;
+  }
+  var board = this.board = [
+    [{},{},{}],
+    [{},{},{}],
+    [{},{},{}]
+  ];
+
+  var rows = convertToArray(document.getElementById("board").children)
+  rows.forEach(function(row, rowI){
+    var cols = convertToArray(row.children)
+    cols.forEach(function(cell, colI){
+      board[rowI][colI].htmlRef = cell;
+      board[rowI][colI].value = null;
+      // wipe out text content
+      board[rowI][colI].htmlRef.innerHTML = '&nbsp;';
+      // clear classes
+      board[rowI][colI].htmlRef.classList.remove('x', 'o');
+
+
+    });
+  });
 };
